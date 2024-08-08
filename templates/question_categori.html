@@ -1,0 +1,22 @@
+<!-- question_categori.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>질문 입력</title>
+    <link rel="stylesheet" href="/static/question_categori.css">
+</head>
+<body>
+    <h1>질문을 입력해주세요!</h1>
+    <form action="/question/info" method="post" target="_self">
+        <label for="subject">질문의 주제:</label>
+        <input type="text" name="subject" id="subject" placeholder="연애, 진로, 학업, 사업 등" required>
+        
+        <label for="question">질문:</label>
+        <input type="text" name="question" id="question" required>
+        
+        <button type="submit">제출</button>
+    </form>
+</body>
+</html>
