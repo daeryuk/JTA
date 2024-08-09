@@ -6,25 +6,26 @@
   
 .card {
     width: 100px;
-    height: 150px;
-    padding: 20px;
-    border: 1px solid #ccc;
-    text-align: center;
-    margin: 10px;
-    cursor: pointer;
-    position: relative;
-    transition: transform 0.6s;
+    height: 140px;
+    margin: 5px; /*카드 간 사이 간격*/
+    transition: transform 0.3s;
     transform-style: preserve-3d;
+    background-color: #ffffff;
+    opacity: 0; /* 처음엔 투명하게 */
+    transform: translateY(50px); /* 아래로 이동된 상태 */
 }
+
+.card.appear {
+    opacity: 1; /* 나타남 */
+    transform: translateY(0); /* 제자리로 이동 */
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out; /* 부드러운 전환 */
+}
+
   
 .card:hover {
     transform: scale(1.1);
 }
   
-.selected {
-    border-color: blue;
-    font-weight: bold;
-}
   
 .selected-card-container {
     display: flex;
@@ -43,14 +44,10 @@
     transition: transform 0.6s;
     transform-style: preserve-3d;
 }
-  
-.hidden h2 {
-    display: none; /* Ensure numbers are not displayed */
-}
+
   
 .hidden {
     background-color: purple; /* Ensure hidden cards are purple */
-    backface-visibility: hidden;
 }
   
   

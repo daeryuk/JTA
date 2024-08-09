@@ -87,14 +87,7 @@ const cards = {
 function createCard(id) {
   const cardContainer = document.querySelector('.card-container');
   const card = document.createElement('div');
-  card.classList.add('card');
-  card.classList.add('hidden'); // 카드를 처음에는 뒷면이 보이도록 설정
-  card.dataset.id = id; // 카드 id는 배정해주어야 함
 
-  //const cardTitle = document.createElement('h2');
-  //cardTitle.textContent = id; // 카드의 번호를 제목으로 설정
-
-  //card.appendChild(cardTitle);
   cardContainer.appendChild(card); // 카드 72장 펼치기
 
   // 클릭해서 선택
@@ -109,24 +102,7 @@ function selectCard(card) {
     }
   
     // 선택된 카드의 id를 selectedCards 배열에 추가
-    selectedCards.push(card.dataset.id); // 이거 없으면 제목이 undefined 
-    card.classList.add('selected'); // 파란색 테두리 
-  
-    // 선택된 카드를 선택된 카드 영역에 추가
-    /*
-    const selectedCardContainer = document.querySelectorAll('.selected-card');
-    selectedCardContainer.forEach((container, index) => {
-      if (index < selectedCards.length) {
-        container.innerHTML = '';
-        const clonedCard = card.cloneNode(true);
-        clonedCard.classList.remove('selected'); //파란색 테두리 제거 (카드를 통째로 가져오기에 불필요한 속성을 제거해줌)
-        //const cardTitle = document.createElement('h2'); // 여기에 카드 제목을 담을 거임
-        //cardTitle.textContent = cards[selectedCards[index]]; // 카드 이름 설정
-        //clonedCard.appendChild(cardTitle); // 이걸 풀면 선택된 카드의 제목이 보이게 된다.
-        container.appendChild(clonedCard);
-      }
-    });
-    */
+    selectedCards.push(card.dataset.id); // 이거 없으면 제목이 undefined   
 }
   
 
@@ -145,75 +121,68 @@ function shuffleCards() {
     cardContainer.appendChild(card);
   });
 }
+// 카드를 생성하는 함수
+function createCard(id) {
+  const card = document.createElement('div');
+  card.classList.add('card', 'hidden'); // 카드를 처음에는 뒷면이 보이도록 설정
+  card.dataset.id = id; // 카드 id는 배정해주어야 함
 
-// 선택 완료 버튼 클릭 시 실행되는 함수
-/*
-document.getElementById('submit-button').addEventListener('click', () => {
-    // 선택된 카드를 뒤집기
-    const selectedCardContainer = document.querySelectorAll('.selected-card');
-    selectedCardContainer.forEach((container, index) => {
-      if (index < selectedCards.length) {
-        const card = container.querySelector('.card');
-        if (card) {
-          card.classList.remove('hidden');
-          card.classList.add('flip');
-          setTimeout(() => {
-            card.classList.remove('flip');
-          }, 200);
-          card.innerHTML = `<h3>${cards[selectedCards[index]]}</h3>`;
-        }
-      }
-    });
-});
-*/
-  
+  // 카드 클릭 이벤트 핸들러 추가
+  card.addEventListener('click', () => selectCard(card));
 
-// 1부터 72까지의 카드를 생성
+  return card;
+}
+
+// 카드를 화면에 차례로 나타나게 하는 함수
+function revealCards() {
+  const cards = Array.from(document.querySelectorAll('.card'));
+
+  cards.forEach((card, index) => {
+      setTimeout(() => {
+          card.classList.add('appear');
+      }, index * 50); // 각 카드가 50ms 간격으로 나타나도록 설정
+  });
+}
+
+// 카드를 선택하는 함수
+function selectCard(card) {
+  if (selectedCards.length < 3 && !card.classList.contains('selected')) {
+      card.classList.add('selected');
+      selectedCards.push(cards[card.dataset.id]); // 카드의 텍스트를 배열에 추가
+      updateSelectedCards();
+  }
+}
+
+// 선택된 카드를 업데이트하는 함수
+function updateSelectedCards() {
+  selectedCardContainer.innerHTML = '';
+  selectedCards.forEach(cardText => {
+      const selectedCard = document.createElement('div');
+      selectedCard.className = 'selected-card';
+      selectedCard.innerText = cardText;
+      selectedCardContainer.appendChild(selectedCard);
+  });
+
+  // 선택한 카드의 텍스트를 hidden input에 저장
+  document.getElementById('cards-input').value = selectedCards.join(', ');
+}
+
+// 카드 생성 및 초기화
 for (let i = 1; i <= 78; i++) {
-  createCard(i);
+  const card = createCard(i);
+  cardContainer.appendChild(card);
 }
 
 // 카드 셔플
 shuffleCards();
 
+// 카드가 순차적으로 나타나도록 트리거
+setTimeout(revealCards, 100);
 
-// Create card elements
-/*
-for (let id in cards) {
-  let card = document.createElement('div');
-  card.className = 'card hidden';
-  card.dataset.id = id;
-  card.innerHTML = `<h2>${cards[id]}</h2>`;
-  card.addEventListener('click', () => selectCard(card));
-  cardContainer.appendChild(card);
-}
-*/
-function selectCard(card) {
-  if (selectedCards.length < 3 && !card.classList.contains('selected')) {
-      card.classList.add('selected');
-      //card.classList.remove('hidden');
-      selectedCards.push(cards[card.dataset.id]);
-      updateSelectedCards();
-  }
-}
-// 카드 정보 이동
-function updateSelectedCards() {
-  selectedCardContainer.innerHTML = '';
-  selectedCards.forEach(card => {
-      let selectedCard = document.createElement('div');
-      selectedCard.className = 'selected-card';
-      selectedCard.innerText = card;
-      selectedCardContainer.appendChild(selectedCard);
-  });
-  //한 줄로 콤마로 분리한다
-  document.getElementById('cards-input').value = selectedCards.join(', ');
-}
-
-// 카드 3장을 뽑아야 함
+// 선택 완료 버튼 클릭 시
 submitButton.addEventListener('click', (event) => {
   if (selectedCards.length !== 3) {
       event.preventDefault();
       alert('카드를 3장 선택하세요.');
   }
 });
-
