@@ -5,12 +5,12 @@ form {
     margin: auto;
 }
 
-label, input {
+label, select, input {
     margin-bottom: 10px;
     width: 100%;
 }
 
-input {
+select, input {
     padding: 8px;
     font-size: 16px;
     box-sizing: border-box;
@@ -19,5 +19,5 @@ input {
 button {
     padding: 10px;
     font-size: 16px;
-    
+    cursor: pointer;
 }

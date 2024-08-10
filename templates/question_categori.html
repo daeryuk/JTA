@@ -1,4 +1,3 @@
-<!-- question_categori.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,10 +10,19 @@
     <h1>질문을 입력해주세요!</h1>
     <form action="/question/info" method="post" target="_self">
         <label for="subject">질문의 주제:</label>
-        <input type="text" name="subject" id="subject" placeholder="연애, 진로, 학업, 사업 등" required>
+        <select name="subject" id="subject" required>
+            <option value="" disabled selected>주제를 선택하세요</option>
+            <option value="연애">연애</option>
+            <option value="경제">경제</option>
+            <option value="진로">미래/진로</option>
+            <option value="학업">학업</option>
+            <option value="사업">사업</option>
+            <option value="가정">가정</option>
+            <option value="건강">건강</option>
+        </select>
         
         <label for="question">질문:</label>
-        <input type="text" name="question" id="question" required>
+        <input type="text" name="question" id="question" placeholder="질문을 입력하세요" required>
         
         <button type="submit">제출</button>
     </form>

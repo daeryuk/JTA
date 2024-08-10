@@ -8,9 +8,11 @@
 </head>
 <body>
     <h1>카드 중에서 원하는 3장을 고르세요</h1>
+    
     <div class="card-container">
-        <!--카드들이 여기에 펼쳐진다-->
+        <!-- 카드들이 여기에 펼쳐진다 -->
     </div>
+    
     <div class="selected-cards">
         <h2>선택한 카드:</h2>
         
@@ -21,12 +23,15 @@
             <div class="selected-card"></div>
             -->
         </div>
+    </div>
     
+    <div class="submit-container">
         <form action="{{ url_for('question.result') }}" method="POST">
             <input type="hidden" name="cards" id="cards-input">
             <button id="submit-button" type="submit">선택 완료</button>
         </form>
     </div>
+    
     <script src="/static/drawCard.js"></script>
 </body>
 </html>
