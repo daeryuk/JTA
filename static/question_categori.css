@@ -1,3 +1,8 @@
+body {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+}
 form {
     display: flex;
     flex-direction: column;
@@ -17,7 +22,29 @@ select, input {
 }
 
 button {
-    padding: 10px;
-    font-size: 16px;
+    padding: 12px 24px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(145deg, #9b59b6, #8e44ad);
+    border: none;
+    border-radius: 50px;
     cursor: pointer;
+    align-self: center;
+    width: 220px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+button:hover {
+    background: linear-gradient(145deg, #8e44ad, #9b59b6);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
