@@ -1,0 +1,41 @@
+/* 배경 이미지 스타일링 */
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background-image: url('https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbfkDan%2FbtsJfC1ZnoN%2FXbxh1E6eN39gezw3cO8btK%2Fimg.jpg'); /* 여기에 배경 이미지 URL을 넣으세요 */
+    background-color: black; /* 여백을 검은색으로 설정 */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain; /* 이미지 비율을 유지하면서 화면에 맞게 조정 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+}
+
+/* "질문으로 넘어가기" 링크 스타일 */
+a {
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 20px;
+    color: white;
+    background: linear-gradient(145deg, #9b59b6, #8e44ad);
+    border-radius: 50px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+a:hover {
+    background: linear-gradient(145deg, #8e44ad, #9b59b6);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}
+
+a:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}

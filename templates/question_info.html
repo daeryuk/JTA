@@ -8,10 +8,9 @@
     <link rel="stylesheet" href="/static/question_info.css">
 </head>
 <body>
-    <h1>세부 정보를 입력해주세요</h1>
     <form action="{{ url_for('question.draw_card') }}" method="POST">
         <div>
-            <label for="detail">세부 정보:</label>
+            <label for="detail">질문에 대한 세부 정보</label>
             <input type="text" name="detail" id="detail" placeholder="가능한 자세히" required>
         </div>
         <button type="submit">제출</button>

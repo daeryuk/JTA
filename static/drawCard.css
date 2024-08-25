@@ -1,10 +1,23 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background-image: url('https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbfkDan%2FbtsJfC1ZnoN%2FXbxh1E6eN39gezw3cO8btK%2Fimg.jpg'); /* 여기에 배경 이미지 URL을 넣으세요 */
+    background-color: black; /* 여백을 검은색으로 설정 */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain; /* 이미지 비율을 유지하면서 화면에 맞게 조정 */
+    justify-content: center;
+    align-items: center;
+}
+
 .card-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     margin-bottom: 20px; /* 카드 선택 영역과 선택된 카드 영역 간의 간격 */
 }
-  
+
 .card {
     width: 100px;
     height: 140px;
@@ -69,20 +82,34 @@
     perspective: 1000px;
 }
 .selected-card {
-    width: 150px;
-    height: 250px;
+    margin-top: 20px;
+    width: 350px;
+    height: 600px;
     border: none;
     border-radius: 15px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
     position: relative;
     transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     transform-style: preserve-3d;
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-    background: linear-gradient(45deg, #c4a7e7 0%, #a0d8ff 100%);
     overflow: hidden;
-    text-align: center; /* 텍스트 가운데 정렬 */
+    background-size: cover;
+    background-position: center;
+}
+.card-title {
+    width: 100%;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.selected-card:hover .card-title {
+    opacity: 1;
 }
 
 .selected-card:hover {
