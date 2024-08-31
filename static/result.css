@@ -1,0 +1,100 @@
+/* 배경 이미지 스타일링 */
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #2c0e37, #1a0b2e);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Nanum Myeongjo', serif;
+    color: #e6d8ff;
+}
+
+.container {
+    background-color: rgba(44, 14, 55, 0.8);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 0 40px rgba(138, 43, 226, 0.4);
+    max-width: 600px;
+    width: 90%;
+}
+
+h1 {
+    text-align: center;
+    color: #b19cd9;
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    text-shadow: 0 0 15px rgba(138, 43, 226, 0.6);
+}
+
+h2 {
+    color: #d8bfff;
+    border-bottom: 2px solid #8a2be2;
+    padding-bottom: 10px;
+    margin-top: 30px;
+}
+
+p {
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.card-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.card {
+    background-color: rgba(138, 43, 226, 0.2);
+    padding: 12px 18px;
+    border-radius: 10px;
+    font-size: 0.9em;
+    border: 1px solid #8a2be2;
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(138, 43, 226, 0.4);
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+}
+
+/* 별 반짝이는 애니메이션 */
+.stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: #fff;
+    border-radius: 50%;
+    animation: twinkle 2s infinite;
+}
+
+@keyframes twinkle {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+}

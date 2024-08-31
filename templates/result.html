@@ -1,18 +1,32 @@
-<!-- result.html -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>결과</title>
+    <link rel="stylesheet" href="/static/result.css">
 </head>
 <body>
-    <h1>당신의 답변을 바탕으로 타로봇이 가동됩니다</h1>
-    <h2>주제: {{ result_data[0] }}</h2>
-    <h2>질문: {{ result_data[1] }}</h2>
-    <h2>세부 정보:</h2>
-    <p>{{ result_data[2] }}</p>
-    <h2>선택한 카드:</h2>
-    <p>{{ result_data[3] | join(', ') }}</p>
+    <!-- 별 애니메이션을 위한 컨테이너 -->
+    <div class="stars"></div>
+
+    <!-- 결과를 보여주는 메인 컨테이너 -->
+    <div class="container">
+        <h1>당신의 답변을 바탕으로 타로봇이 가동됩니다</h1>
+        <h2>주제</h2>
+        <p>{{ result_data[0] }}</p>
+        <h2>질문</h2>
+        <p>{{ result_data[1] }}</p>
+        <h2>세부 정보</h2>
+        <p>{{ result_data[2] }}</p>
+        <h2>선택한 카드</h2>
+        <div class="card-list">
+            {% for card in result_data[3] %}
+                <div class="card">{{ card }}</div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <script src="/static/result.js"></script>
 </body>
 </html>
