@@ -17,7 +17,7 @@ body {
 
 /* 기존 레이아웃 스타일 */
 .container {
-    max-width: 400px;
+    max-width: 500px;
     width: 100%;
     padding: 20px;
     background-color: rgba(0, 0, 0, 0.5); /* 텍스트를 읽기 쉽게 하기 위해 약간의 반투명 검은 배경 추가 */
@@ -28,7 +28,7 @@ body {
 form {
     display: flex;
     flex-direction: column;
-    width: 300px;
+    width: 500px;
     margin: auto;
 }
 

@@ -2,6 +2,7 @@ let selectedCards = [];
 const cardContainer = document.querySelector('.card-container');
 const selectedCardContainer = document.querySelector('.selected-card-container');
 const submitButton = document.getElementById('submit-button');
+const deckSelect = document.getElementById('deck-select');
 const cards = {
   //메이저 타로카드(The Major Arcana)
   1: { name: "The Fool", image: "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FdfeWrV%2Fbtq1ca9uYNF%2FGmABVtkbrkAjyGpCYT49d0%2Fimg.jpg" },
@@ -101,6 +102,16 @@ function createCard(id) {
   return card;
 }
 
+// 사용자가 선택한 덱의 카드 수만큼 카드를 생성합니다.
+function initializeCards(deckSize) {
+  cardContainer.innerHTML = ''; // 이전 카드 초기화
+  for (let i = 0; i < deckSize; i++) {
+    const card = createCard(i);
+    cardContainer.appendChild(card);
+  }
+  shuffleCards(); // 카드 셔플
+  setTimeout(revealCards, 100); // 카드가 순차적으로 나타나도록 트리거
+}
 
 // 카드를 셔플하는 함수
 function shuffleCards() {
@@ -158,17 +169,15 @@ function updateSelectedCards() {
   document.getElementById('cards-input').value = selectedCards.map(card => card.name).join(', ');
 }
 
-// 카드 생성 및 초기화
-for (let i = 1; i <= 78; i++) {
-  const card = createCard(i);
-  cardContainer.appendChild(card);
-}
+// 덱 선택 시 이벤트 핸들러
+deckSelect.addEventListener('change', (event) => {
+  const selectedDeckSize = parseInt(event.target.value, 10);
+  selectedCards = [];
+  initializeCards(selectedDeckSize);
+});
 
-// 카드 셔플
-shuffleCards();
-
-// 카드가 순차적으로 나타나도록 트리거
-setTimeout(revealCards, 100);
+// 초기화: 사용자가 선택하지 않은 경우 22장의 카드로 시작
+initializeCards(22);
 
 // 선택 완료 버튼 클릭 시
 submitButton.addEventListener('click', (event) => {

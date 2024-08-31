@@ -72,6 +72,98 @@ body {
     pointer-events: none;
     border-radius: 10px;
 }
+/* 덱 선택 섹션 래퍼 */
+.deck-selection-wrapper {
+    position: relative;
+    width: fit-content;
+    margin: 5px auto;
+}
+
+/* 페이지 상단 타이틀 스타일 */
+.title {
+    background-color: #8a2be2; /* 보랏빛 배경 */
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 0 0 8px 8px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    cursor: pointer; /* 커서 포인터 추가 */
+}
+
+/* 덱 선택 섹션 스타일 */
+.deck-selection {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    width: 350px;
+    margin: 20px auto;
+    text-align: center;
+    opacity: 0;
+    visibility: hidden; /* 기본적으로 숨김 */
+    transform: translateY(-20px); /* 페이지 상단으로 숨기기 */
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+}
+
+/* 덱 선택 섹션이 보이도록 */
+.deck-selection-wrapper:hover .deck-selection {
+    opacity: 1;
+    visibility: visible; /* 보이도록 설정 */
+    transform: translateY(0);
+}
+
+/* 레이블 스타일 */
+.deck-selection label {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+    display: block;
+}
+
+/* 선택 상자 스타일을 감싸는 래퍼 */
+.select-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+/* 선택 상자 스타일 */
+#deck-select {
+    width: 100%;
+    padding: 14px 24px;
+    font-size: 16px;
+    border: 2px solid #8a2be2; /* 보랏빛 테두리 */
+    border-radius: 8px;
+    appearance: none;
+    cursor: pointer;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* 선택 상자 호버 및 포커스 시 스타일 */
+#deck-select:hover, #deck-select:focus {
+    border-color: #9932cc; /* 진한 보랏빛 */
+    box-shadow: 0 0 5px rgba(138, 43, 226, 0.3); /* 보랏빛 그림자 */
+    outline: none;
+}
+
+/* 선택 상자의 화살표 스타일 */
+.select-wrapper::after {
+    content: '\25BC';
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #8a2be2; /* 보랏빛 화살표 */
+}
+
+/* 선택 상자 옵션 스타일 */
+#deck-select option {
+    padding: 14px;
+}
 
 /*섬택된 카드 컨테이너 및 선택된 카드 속성*/
 .selected-card-container {
@@ -154,9 +246,14 @@ body {
 /*end*/
 
 .hidden {
-    background-color: purple; /* Ensure hidden cards are purple */
+    background-image: url('https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FciY4iK%2FbtsJnvPewNa%2FIrkeEsQQREklt85iQmgke1%2Fimg.png'); /* 카드 뒷면 이미지 설정 */
+    background-size: cover; /* 이미지가 카드 크기에 맞게 */
+    background-position: center; /* 이미지가 카드의 중앙에 위치 */
+    background-repeat: no-repeat; /* 이미지 반복 금지 */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px; /* 카드 모서리 둥글게 */
 }
-  
+
 @keyframes flip {
     from {
         transform: rotateY(0);

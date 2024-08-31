@@ -13,15 +13,26 @@ body {
     font-family: Arial, sans-serif;
     color: white; /* 전체 텍스트 색상을 흰색으로 변경 */
 }
-
+.container {
+    width: 80%; 
+    max-width: 600px;
+    padding: 30px; /* 전체 컨테이너의 패딩 */
+    background-color: rgba(0, 0, 0, 0.6); /* 투명한 배경 */
+    border-radius: 10px; /* 둥근 모서리 */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center; /* 텍스트 중앙 정렬 */
+}
 form {
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* 수직 정렬 */
+    align-items: center; /* 가운데 정렬 */
+    width: 600px; 
+    margin: 0 auto; /* 상하 좌우 가운데 정렬 */
 }
 
 label, input {
     margin-bottom: 10px;
-    width: 100%;
+    width: 80%;
     
 }
 input {
